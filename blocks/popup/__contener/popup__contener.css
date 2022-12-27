@@ -1,0 +1,16 @@
+.popup__contener {
+  margin: 0 auto;
+  height: 397px;
+  width: 284px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 17px;
+}
+
+@media screen and (min-width: 800px) {
+  .popup__contener {
+    width: 510px;
+    height: 412px;
+    row-gap: 10px;
+  }
+}
