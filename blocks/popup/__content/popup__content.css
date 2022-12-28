@@ -7,14 +7,12 @@
   border-radius: 10px;
   width: 282px;
   box-sizing: border-box;
-  padding: 25px 22px 0;
-  min-height: 358px;
+  padding: 25px 22px 25px;
 }
 
 @media screen and (min-width: 900px) {
   .popup__content {
     width: 430px;
-    min-height: 330px;
     padding: 34px 36px 38px;
   }
 }
