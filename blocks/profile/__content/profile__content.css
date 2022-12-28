@@ -5,7 +5,7 @@
   padding-left: 28px;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
   .profile__content {
     padding-top: 7px;
     padding-left: 30px;

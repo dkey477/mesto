@@ -1,13 +1,14 @@
 .popup__save {
+  border: none;
   background: #000000;
   color: #fff;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 14px;
+  line-height: 17px;
   text-align: center;
-  margin-top: 43px;
+  margin-top: 46px;
   height: 47px;
   cursor: pointer;
   transition: opacity 0.3s ease-in;
@@ -17,9 +18,11 @@
   opacity: 0.8;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
   .popup__save {
-    margin-top: 47px;
+    margin-top: 52px;
+    font-size: 18px;
+    line-height: 22px;
   }
 }
 

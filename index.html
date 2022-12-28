@@ -11,7 +11,7 @@
 
 <body class="page">
   <header class="header">
-    <img class="header__logo" src="./images/Vector.png" alt="логотип Mesto">
+    <img class="header__logo" src="./images/logo.svg" alt="логотип Mesto">
   </header>
   <main>
     <section class="profile">
@@ -19,72 +19,72 @@
       <div>
         <div class="profile__content">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
-          <button class="profile__popup-open"></button>
+          <button class="profile__popup-open" type="button"></button>
         </div>
         <p class="profile__subtitle">Исследователь океана</p>
       </div>
-      <button class="profile__rectangle"></button>
+      <button class="profile__rectangle" type="button"></button>
     </section>
     <section class="elements">
-      <figure class="element">
+      <div class="element">
         <img src="./images/karachaevsk.png" alt="Фотография Карачаевск" class="element__image">
-        <figcaption class="element__caption">
+        <div class="element__caption">
           <h2 class="element__text">Карачаевск</h2>
-          <button class="element__icon"></button>
-        </figcaption>
-      </figure>
-      <figure class="element">
+          <button class="element__icon" type="button"></button>
+        </div>
+      </div>
+      <div class="element">
         <img src="./images/gora-Elbrus.png" alt="Гора Эльбрус" class="element__image">
-        <figcaption class="element__caption">
+        <div class="element__caption">
           <h2 class="element__text">Гора Эльбрус</h2>
-          <button class="element__icon"></button>
-        </figcaption>
-      </figure>
-      <figure class="element">
+          <button class="element__icon" type="button"></button>
+        </div>
+      </div>
+      <div class="element">
         <img src="./images/Dombai.png" alt="Фотография Домбай" class="element__image">
-        <figcaption class="element__caption">
+        <div class="element__caption">
           <h2 class="element__text">Домбай</h2>
-          <button class="element__icon"></button>
-        </figcaption>
-      </figure>
-      <figure class="element">
+          <button class="element__icon" type="button"></button>
+        </div>
+      </div>
+      <div class="element">
         <img src="./images/gora-Elbrus.png" alt="Гора Эльбрус" class="element__image">
-        <figcaption class="element__caption">
+        <div class="element__caption">
           <h2 class="element__text">Гора Эльбрус</h2>
-          <button class="element__icon"></button>
-        </figcaption>
-      </figure>
-      <figure class="element">
+          <button class="element__icon" type="button"></button>
+        </div>
+      </div>
+      <div class="element">
         <img src="./images/Dombai.png" alt="Фотография Домбай" class="element__image">
-        <figcaption class="element__caption">
+        <div class="element__caption">
           <h2 class="element__text">Домбай</h2>
-          <button class="element__icon"></button>
-        </figcaption>
-      </figure>
-      <figure class="element">
+          <button class="element__icon" type="button"></button>
+        </div>
+      </div>
+      <div class="element">
         <img src="./images/karachaevsk.png" alt="Фотография Карачаевск" class="element__image">
-        <figcaption class="element__caption">
+        <div class="element__caption">
           <h2 class="element__text">Карачаево-Черкессия</h2>
-          <button class="element__icon"></button>
-        </figcaption>
-      </figure>
-    </section>
-    <!-- Попап -->
-    <section class="popup">
-      <div class="popup__contener">
-        <button class="popup__close"></button>
-        <form class="popup__content">
-          <h2 class="popup__title">Редактировать профиль</h2>
-          <input type="text" name="name" placeholder="Ваше имя" class="popup__name">
-          <input type="text" name="job" placeholder="Сфера деятельности" class="popup__about">
-          <button class="popup__save" type="submit">Сохранить</button>
-        </form>
+          <button class="element__icon" type="button"></button>
+        </div>
       </div>
     </section>
   </main>
   <footer class="footer">
     <p class="footer__copyright">&copy; 2022. Дмитрий Киреев</p>
   </footer>
+  <!-- Попап -->
+  <div class="popup">
+    <div class="popup__contener">
+      <button class="popup__close" type="button"></button>
+      <form class="popup__content" name="popup" method="post">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <input type="text" name="name" placeholder="Ваше имя" class="popup__input popup__input_type_name">
+        <input type="text" name="job" placeholder="Сфера деятельности" class="popup__input popup__input_type_about">
+        <button class="popup__save" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
   <script src="./scripts/index.js"></script>
 </body>
 

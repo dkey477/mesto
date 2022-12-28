@@ -1,16 +1,15 @@
 .popup__contener {
+  align-self: center;
   margin: 0 auto;
-  height: 397px;
   width: 284px;
   display: flex;
   flex-direction: column;
   row-gap: 17px;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
   .popup__contener {
     width: 510px;
-    height: 412px;
-    row-gap: 10px;
+    row-gap: 12px;
   }
 }

@@ -14,7 +14,7 @@
   opacity: 0.6;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
   .profile__rectangle {
     min-width: 150px;
     max-height: 50px;

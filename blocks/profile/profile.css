@@ -8,7 +8,7 @@
   color: #fff;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
   .profile {
     display: grid;
     grid-template-columns: max-content max-content 1fr;

@@ -1,0 +1,19 @@
+.popup__input {
+  border-bottom: 1px rgba(0,0,0,.2) solid;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  margin-top: 76px;
+  padding-bottom: 6px;
+}
+
+.popup__input:nth-child(3) {
+  margin-top: 31px;
+}
+
+
+@media screen and (min-width: 900px) {
+  .popup__input {
+    margin-top: 47px;
+  }
+}

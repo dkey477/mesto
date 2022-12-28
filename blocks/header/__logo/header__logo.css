@@ -2,10 +2,11 @@
   max-width: 103.74px;
   max-height: 24.4px;
   padding-left: 27px;
+  padding-bottom: 27px;
   color: #fff;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
   .header__logo {
     max-width: 142px;
     max-height: 33px;
