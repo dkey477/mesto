@@ -1,0 +1,13 @@
+.popup__title_type_image {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+@media screen and (min-width: 900px) {
+  .popup__title_type_image {
+    padding-left: 40px;
+  }
+}
