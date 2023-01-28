@@ -1,7 +1,5 @@
 .popup__contener {
-  align-self: center;
-  margin: -42px auto 0 auto;
-  width: 284px;
+  position: relative;
   display: flex;
   flex-direction: column;
   row-gap: 17px;
@@ -9,7 +7,6 @@
 
 @media screen and (min-width: 900px) {
   .popup__contener {
-    width: 510px;
     row-gap: 12px;
   }
 }
