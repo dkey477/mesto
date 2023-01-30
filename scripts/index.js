@@ -19,6 +19,14 @@ const popupFormElementAddcard =
 const titleInput = popupElementAddcard.querySelector(".popup__input_type_name");
 const titleLink = popupElementAddcard.querySelector(".popup__input_type_about");
 
+// поиск попапа увелечения фото
+const popupElementBigImg = document.querySelector(".popup_type_image");
+const popupCloseButtonElementBigImg =
+  popupElementBigImg.querySelector(".popup__close");
+const popupCardText = popupElementBigImg.querySelector(".popup__title");
+const popupCardImage = popupElementBigImg.querySelector(".popup__image");
+// для открытия попапа увелечения фото используется const cardImage
+
 //Поиск блока профиля, кнопки открытия попапа, имя профиля, сфера деятельности профиля
 const profileElement = document.querySelector(".profile");
 const popupOpenButtonElementProfile = profileElement.querySelector(
@@ -69,7 +77,7 @@ popupCloseButtonElementAddcard.addEventListener("click", () => {
 const cardTemplate = document.querySelector("#element-card").content;
 const cardsContainer = document.querySelector(".elements");
 
-const createCard = (name, link, alt) => {
+const createCard = (name, link) => {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector(".element__image");
   const cardText = cardElement.querySelector(".element__text");
@@ -78,15 +86,6 @@ const createCard = (name, link, alt) => {
 
   cardText.textContent = name;
   cardImage.src = link;
-  cardImage.alt = name;
-
- // поиск попапа увелечения фото
- const popupElementBigImg = document.querySelector(".popup_type_image");
- const popupCloseButtonElementBigImg =
-   popupElementBigImg.querySelector(".popup__close");
- const popupCardText = popupElementBigImg.querySelector(".popup__title");
- const popupCardImage = popupElementBigImg.querySelector(".popup__image");
- // для открытия попапа увелечения фото используется const cardImage
 
   // Добавление лайков
   cardLike.addEventListener("click", (evt) => {
@@ -98,28 +97,22 @@ const createCard = (name, link, alt) => {
     deleteCard.remove();
   });
 
-
-
   // Работа кнопки включения попапа увелечения фото
   cardImage.addEventListener("click", () => {
     togglePopup(popupElementBigImg);
 
     popupCardText.textContent = name;
     popupCardImage.src = link;
-    popupCardImage.alt = name;
   });
 
   return cardElement;
 };
 
 initialCards.forEach((element) => {
-  cardsContainer.append(createCard(element.name, element.link, element.alt));
+  cardsContainer.append(createCard(element.name, element.link));
 });
 
 // Работа кнопки выкл попапа увелечения фото
-const popupElementBigImg = document.querySelector(".popup_type_image");
-const popupCloseButtonElementBigImg =
-  popupElementBigImg.querySelector(".popup__close");
 popupCloseButtonElementBigImg.addEventListener("click", () => {
   togglePopup(popupElementBigImg);
 });
