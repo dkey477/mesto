@@ -39,37 +39,49 @@ const profileTitle = profileElement.querySelector(".profile__title");
 const profileSubtitle = profileElement.querySelector(".profile__subtitle");
 
 // Включение выключение попапа
-const togglePopup = (popup) => {
-  popup.classList.toggle("popup_open");
+const openPopup = (popup) => {
+  popup.classList.add("popup_open");
+  document.addEventListener("keydown", closePopupEsc);
 };
 
+const closePopup = (popup) => {
+  popup.classList.remove("popup_open");
+  document.removeEventListener("keydown", closePopupEsc);
+};
+// Закрытие попапа по Esc
+const closePopupEsc = (evt) => {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".popup_open");
+    closePopup(openedPopup);
+  }
+};
 // Работа кнопки включения попапа Профиля, с переносом текста профиля
 popupOpenButtonElementProfile.addEventListener("click", () => {
   popupName.value = profileTitle.textContent;
   popupAbout.value = profileSubtitle.textContent;
-  togglePopup(popupElementProfile);
+  openPopup(popupElementProfile);
 });
 // Работа кнопки выкл попапа Профиля
 popupCloseButtonElementProfile.addEventListener("click", () => {
-  togglePopup(popupElementProfile);
+  closePopup(popupElementProfile);
 });
 // Перенос текста из шапки Профиля в попап
 function insertText(evt) {
   evt.preventDefault();
   profileTitle.textContent = popupName.value;
   profileSubtitle.textContent = popupAbout.value;
-  togglePopup(popupElementProfile);
+  closePopup(popupElementProfile);
 }
 // Сохранение текста из попапа в шапку Профиля
 popupFormElementProfile.addEventListener("submit", insertText);
 
 // Работа кнопки включения попапа Добавления карточки
 popupOpenButtonElementAddcard.addEventListener("click", () => {
-  togglePopup(popupElementAddcard);
+  openPopup(popupElementAddcard);
 });
 // Работа кнопки выкл попапа Добавления карточки
 popupCloseButtonElementAddcard.addEventListener("click", () => {
-  togglePopup(popupElementAddcard);
+  closePopup(popupElementAddcard);
   popupFormElementAddcard.reset;
 });
 
@@ -99,10 +111,11 @@ const createCard = (name, link) => {
 
   // Работа кнопки включения попапа увелечения фото
   cardImage.addEventListener("click", () => {
-    togglePopup(popupElementBigImg);
+    openPopup(popupElementBigImg);
 
     popupCardText.textContent = name;
     popupCardImage.src = link;
+    popupCardImage.alt = name;
   });
 
   return cardElement;
@@ -114,15 +127,24 @@ initialCards.forEach((element) => {
 
 // Работа кнопки выкл попапа увелечения фото
 popupCloseButtonElementBigImg.addEventListener("click", () => {
-  togglePopup(popupElementBigImg);
+  closePopup(popupElementBigImg);
 });
 
 // Функция добавления карточек
 const addNewcard = (evt) => {
   evt.preventDefault();
   cardsContainer.prepend(createCard(titleInput.value, titleLink.value));
-  togglePopup(popupElementAddcard);
+  closePopup(popupElementAddcard);
   popupContElementAddcard.reset();
 };
+// Функция закрытия попапов по офверлэю
+const closePopupOverlay = (evt) => {
+  const openedPopup = document.querySelector(".popup_open");
+  if (evt.target === openedPopup) {
+    closePopup(openedPopup);
+  }
+};
+
+document.addEventListener("mousedown", closePopupOverlay);
 
 popupFormElementAddcard.addEventListener("submit", addNewcard);
