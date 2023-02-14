@@ -42,11 +42,14 @@ const profileSubtitle = profileElement.querySelector(".profile__subtitle");
 const openPopup = (popup) => {
   popup.classList.add("popup_open");
   document.addEventListener("keydown", closePopupEsc);
+  document.addEventListener("mousedown", closePopupOverlay);
+  enableValidation(formValidation);
 };
 
 const closePopup = (popup) => {
   popup.classList.remove("popup_open");
   document.removeEventListener("keydown", closePopupEsc);
+  document.removeEventListener("mousedown", closePopupOverlay);
 };
 // Закрытие попапа по Esc
 const closePopupEsc = (evt) => {
@@ -135,16 +138,13 @@ const addNewcard = (evt) => {
   evt.preventDefault();
   cardsContainer.prepend(createCard(titleInput.value, titleLink.value));
   closePopup(popupElementAddcard);
-  popupContElementAddcard.reset();
+  popupFormElementAddcard.reset();
 };
 // Функция закрытия попапов по офверлэю
 const closePopupOverlay = (evt) => {
-  const openedPopup = document.querySelector(".popup_open");
-  if (evt.target === openedPopup) {
-    closePopup(openedPopup);
+  if (evt.target.classList.contains("popup_open")) {
+    closePopup(evt.target);
   }
 };
-
-document.addEventListener("mousedown", closePopupOverlay);
 
 popupFormElementAddcard.addEventListener("submit", addNewcard);
