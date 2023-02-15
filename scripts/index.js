@@ -42,14 +42,11 @@ const profileSubtitle = profileElement.querySelector(".profile__subtitle");
 const openPopup = (popup) => {
   popup.classList.add("popup_open");
   document.addEventListener("keydown", closePopupEsc);
-  document.addEventListener("mousedown", closePopupOverlay);
-  enableValidation(formValidation);
 };
 
 const closePopup = (popup) => {
   popup.classList.remove("popup_open");
   document.removeEventListener("keydown", closePopupEsc);
-  document.removeEventListener("mousedown", closePopupOverlay);
 };
 // Закрытие попапа по Esc
 const closePopupEsc = (evt) => {
@@ -63,6 +60,7 @@ popupOpenButtonElementProfile.addEventListener("click", () => {
   popupName.value = profileTitle.textContent;
   popupAbout.value = profileSubtitle.textContent;
   openPopup(popupElementProfile);
+  document.addEventListener("mousedown", closePopupOverlay);
 });
 // Работа кнопки выкл попапа Профиля
 popupCloseButtonElementProfile.addEventListener("click", () => {
@@ -74,6 +72,7 @@ function insertText(evt) {
   profileTitle.textContent = popupName.value;
   profileSubtitle.textContent = popupAbout.value;
   closePopup(popupElementProfile);
+  document.removeEventListener("mousedown", closePopupOverlay);
 }
 // Сохранение текста из попапа в шапку Профиля
 popupFormElementProfile.addEventListener("submit", insertText);
@@ -81,11 +80,13 @@ popupFormElementProfile.addEventListener("submit", insertText);
 // Работа кнопки включения попапа Добавления карточки
 popupOpenButtonElementAddcard.addEventListener("click", () => {
   openPopup(popupElementAddcard);
+  document.addEventListener("mousedown", closePopupOverlay);
 });
 // Работа кнопки выкл попапа Добавления карточки
 popupCloseButtonElementAddcard.addEventListener("click", () => {
   closePopup(popupElementAddcard);
   popupFormElementAddcard.reset;
+  document.removeEventListener("mousedown", closePopupOverlay);
 });
 
 // Добавлени каточек из масива, примение темплейн
@@ -119,6 +120,8 @@ const createCard = (name, link) => {
     popupCardText.textContent = name;
     popupCardImage.src = link;
     popupCardImage.alt = name;
+
+    document.addEventListener("mousedown", closePopupOverlay);
   });
 
   return cardElement;
@@ -131,6 +134,7 @@ initialCards.forEach((element) => {
 // Работа кнопки выкл попапа увелечения фото
 popupCloseButtonElementBigImg.addEventListener("click", () => {
   closePopup(popupElementBigImg);
+  document.removeEventListener("mousedown", closePopupOverlay);
 });
 
 // Функция добавления карточек
@@ -139,6 +143,8 @@ const addNewcard = (evt) => {
   cardsContainer.prepend(createCard(titleInput.value, titleLink.value));
   closePopup(popupElementAddcard);
   popupFormElementAddcard.reset();
+  evt.submitter.classList.add("popup__save_disabled");
+  evt.submitter.disabled = true;
 };
 // Функция закрытия попапов по офверлэю
 const closePopupOverlay = (evt) => {

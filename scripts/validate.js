@@ -4,14 +4,11 @@ const formValidation = {
   submitButtonSelector: ".popup__save",
   inactiveButtonClass: "popup__save_disabled",
   inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__error",
 };
 // Показываем элемент ошибки
 const showInputError = (config, formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  console.log(errorElement);
   inputElement.classList.add(config.inputErrorClass);
-  errorElement.classList.add(config.errorClass);
   errorElement.textContent = errorMessage;
 };
 // Скрываем элемент ошибки
