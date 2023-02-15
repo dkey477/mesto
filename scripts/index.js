@@ -65,6 +65,7 @@ popupOpenButtonElementProfile.addEventListener("click", () => {
 // Работа кнопки выкл попапа Профиля
 popupCloseButtonElementProfile.addEventListener("click", () => {
   closePopup(popupElementProfile);
+  document.removeEventListener("mousedown", closePopupOverlay);
 });
 // Перенос текста из шапки Профиля в попап
 function insertText(evt) {
@@ -72,7 +73,6 @@ function insertText(evt) {
   profileTitle.textContent = popupName.value;
   profileSubtitle.textContent = popupAbout.value;
   closePopup(popupElementProfile);
-  document.removeEventListener("mousedown", closePopupOverlay);
 }
 // Сохранение текста из попапа в шапку Профиля
 popupFormElementProfile.addEventListener("submit", insertText);
