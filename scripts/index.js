@@ -1,4 +1,5 @@
 // Поиск попапа профиля
+const popupElements = document.querySelectorAll('.popup')
 const popupElementProfile = document.querySelector(".popup_type_profile");
 const popupFormElementProfile =
   popupElementProfile.querySelector(".popup__content");
@@ -55,17 +56,20 @@ const closePopupEsc = (evt) => {
     closePopup(openedPopup);
   }
 };
+
+
 // Работа кнопки включения попапа Профиля, с переносом текста профиля
 popupOpenButtonElementProfile.addEventListener("click", () => {
   popupName.value = profileTitle.textContent;
   popupAbout.value = profileSubtitle.textContent;
   openPopup(popupElementProfile);
-  document.addEventListener("mousedown", closePopupOverlay);
 });
+
+
+
 // Работа кнопки выкл попапа Профиля
 popupCloseButtonElementProfile.addEventListener("click", () => {
   closePopup(popupElementProfile);
-  document.removeEventListener("mousedown", closePopupOverlay);
 });
 // Перенос текста из шапки Профиля в попап
 function insertText(evt) {
@@ -80,13 +84,11 @@ popupFormElementProfile.addEventListener("submit", insertText);
 // Работа кнопки включения попапа Добавления карточки
 popupOpenButtonElementAddcard.addEventListener("click", () => {
   openPopup(popupElementAddcard);
-  document.addEventListener("mousedown", closePopupOverlay);
 });
 // Работа кнопки выкл попапа Добавления карточки
 popupCloseButtonElementAddcard.addEventListener("click", () => {
   closePopup(popupElementAddcard);
   popupFormElementAddcard.reset;
-  document.removeEventListener("mousedown", closePopupOverlay);
 });
 
 // Добавлени каточек из масива, примение темплейн
@@ -121,7 +123,6 @@ const createCard = (name, link) => {
     popupCardImage.src = link;
     popupCardImage.alt = name;
 
-    document.addEventListener("mousedown", closePopupOverlay);
   });
 
   return cardElement;
@@ -134,7 +135,6 @@ initialCards.forEach((element) => {
 // Работа кнопки выкл попапа увелечения фото
 popupCloseButtonElementBigImg.addEventListener("click", () => {
   closePopup(popupElementBigImg);
-  document.removeEventListener("mousedown", closePopupOverlay);
 });
 
 // Функция добавления карточек
@@ -152,5 +152,9 @@ const closePopupOverlay = (evt) => {
     closePopup(evt.target);
   }
 };
+// Установка слушателя оверлэй в каждый попап
+popupElements.forEach((popup) => {
+  popup.addEventListener("mousedown", closePopupOverlay);
+})
 
 popupFormElementAddcard.addEventListener("submit", addNewcard);
