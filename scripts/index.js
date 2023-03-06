@@ -1,3 +1,7 @@
+import { initialCards } from "./cards.js"
+import Card from "./Card.js"
+import { formValidation, FormValidator} from "./FormValidator.js"
+
 // Поиск попапа профиля
 const popupElements = document.querySelectorAll('.popup')
 const popupElementProfile = document.querySelector(".popup_type_profile");
@@ -39,6 +43,12 @@ const popupOpenButtonElementAddcard = profileElement.querySelector(
 const profileTitle = profileElement.querySelector(".profile__title");
 const profileSubtitle = profileElement.querySelector(".profile__subtitle");
 
+// Валидация попапов
+const validPopupFormElementProfile = new FormValidator(formValidation, popupFormElementProfile);
+validPopupFormElementProfile.enableValidation();
+
+const validPopupFormElementAddcard = new FormValidator(formValidation, popupFormElementAddcard)
+validPopupFormElementAddcard.enableValidation();
 // Включение выключение попапа
 const openPopup = (popup) => {
   popup.classList.add("popup_open");
@@ -63,6 +73,7 @@ popupOpenButtonElementProfile.addEventListener("click", () => {
   popupName.value = profileTitle.textContent;
   popupAbout.value = profileSubtitle.textContent;
   openPopup(popupElementProfile);
+  validPopupFormElementProfile.clearValid();
 });
 
 
@@ -84,6 +95,7 @@ popupFormElementProfile.addEventListener("submit", insertText);
 // Работа кнопки включения попапа Добавления карточки
 popupOpenButtonElementAddcard.addEventListener("click", () => {
   openPopup(popupElementAddcard);
+  validPopupFormElementAddcard.clearValid();
 });
 // Работа кнопки выкл попапа Добавления карточки
 popupCloseButtonElementAddcard.addEventListener("click", () => {
@@ -92,44 +104,55 @@ popupCloseButtonElementAddcard.addEventListener("click", () => {
 });
 
 // Добавлени каточек из масива, примение темплейн
-const cardTemplate = document.querySelector("#element-card").content;
+// const cardTemplate = document.querySelector("#element-card").content;
 const cardsContainer = document.querySelector(".elements");
 
-const createCard = (name, link) => {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImage = cardElement.querySelector(".element__image");
-  const cardText = cardElement.querySelector(".element__text");
-  const cardLike = cardElement.querySelector(".element__icon");
-  const deleteBtn = cardElement.querySelector(".element__basket");
+const createCard = (data) => {
+  const card = new Card(data, "#element-card", handleOpenCardImg);
+  return card.createCardImg();
+}
 
-  cardText.textContent = name;
-  cardImage.src = link;
+// const createCard = (name, link) => {
+  // const cardElement = cardTemplate.cloneNode(true);
+  const cardImage = document.querySelector(".element__image");
+  const cardText = document.querySelector(".element__text");
+  const cardLike = document.querySelector(".element__icon");
+  const deleteBtn = document.querySelector(".element__basket");
 
-  // Добавление лайков
-  cardLike.addEventListener("click", (evt) => {
-    evt.target.classList.toggle("element__icon_active_on");
-  });
-  // Удаление карточек
-  deleteBtn.addEventListener("click", (evt) => {
-    const deleteCard = evt.target.closest(".element");
-    deleteCard.remove();
-  });
+  const handleOpenCardImg = (cont) => {
+    openPopup(popupElementBigImg);
+    popupCardText.textContent = cont.name;
+    popupCardImage.src = cont.link;
+    popupCardImage.alt = cont.name;
+  }
+//   cardText.textContent = name;
+//   cardImage.src = link;
+
+//   // Добавление лайков
+//   cardLike.addEventListener("click", (evt) => {
+//     evt.target.classList.toggle("element__icon_active_on");
+//   });
+//   // Удаление карточек
+//   deleteBtn.addEventListener("click", (evt) => {
+//     const deleteCard = evt.target.closest(".element");
+//     deleteCard.remove();
+//   });
 
   // Работа кнопки включения попапа увелечения фото
-  cardImage.addEventListener("click", () => {
-    openPopup(popupElementBigImg);
+  // cardImage.addEventListener("click", () => {
+  //   openPopup(popupElementBigImg);
 
-    popupCardText.textContent = name;
-    popupCardImage.src = link;
-    popupCardImage.alt = name;
+  //   popupCardText.textContent = name;
+  //   popupCardImage.src = link;
+  //   popupCardImage.alt = name;
 
-  });
+//   });
 
-  return cardElement;
-};
+//   return cardElement;
+// };
 
 initialCards.forEach((element) => {
-  cardsContainer.append(createCard(element.name, element.link));
+  cardsContainer.append(createCard(element));
 });
 
 // Работа кнопки выкл попапа увелечения фото
@@ -140,7 +163,10 @@ popupCloseButtonElementBigImg.addEventListener("click", () => {
 // Функция добавления карточек
 const addNewcard = (evt) => {
   evt.preventDefault();
-  cardsContainer.prepend(createCard(titleInput.value, titleLink.value));
+  cardsContainer.prepend(createCard({
+    name: titleInput.value,
+    link: titleLink.value
+  }));
   closePopup(popupElementAddcard);
   popupFormElementAddcard.reset();
   evt.submitter.classList.add("popup__save_disabled");
