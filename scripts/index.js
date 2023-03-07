@@ -1,6 +1,6 @@
-import { initialCards } from "./cards.js"
+import { initialCards, formValidation } from "./cards.js"
 import Card from "./Card.js"
-import { formValidation, FormValidator} from "./FormValidator.js"
+import FormValidator from "./FormValidator.js"
 
 // Поиск попапа профиля
 const popupElements = document.querySelectorAll('.popup')
@@ -169,8 +169,6 @@ const addNewcard = (evt) => {
   }));
   closePopup(popupElementAddcard);
   popupFormElementAddcard.reset();
-  evt.submitter.classList.add("popup__save_disabled");
-  evt.submitter.disabled = true;
 };
 // Функция закрытия попапов по офверлэю
 const closePopupOverlay = (evt) => {

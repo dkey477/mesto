@@ -38,6 +38,7 @@ export default class Card {
   // Клик по корзне
   _handleDeleteBtn() {
     this._element.remove();
+    this._element = null;
   }
   // Клик по картинке
   _handleOpenCard() {
