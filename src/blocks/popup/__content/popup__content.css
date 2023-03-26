@@ -3,7 +3,7 @@
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  /* justify-content: start; */
   border-radius: 10px;
   width: 282px;
   box-sizing: border-box;

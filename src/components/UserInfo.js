@@ -3,16 +3,16 @@ export default class UserInfo {
     this._profileName = document.querySelector(profileTitle);
     this._profileAbout = document.querySelector(profileSubtitle);
   }
-
+// сбор информации из профиля
   getUserInfo() {
     return {
       name: this._profileName.textContent,
-      activity: this._profileAbout.textContent
+      job: this._profileAbout.textContent
     };
   }
-
-  setUserInfo({name, activity}) {
+// Вставка информции из формы в профиль
+  setUserInfo({name, job}) {
     this._profileName.textContent = name;
-    this._profileAbout.textContent = activity
+    this._profileAbout.textContent = job;
   }
 }
