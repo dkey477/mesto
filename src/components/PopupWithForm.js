@@ -17,11 +17,11 @@ export default class PopupWithForm extends Popup {
     });
     return this._formValues
   }
-
+// Заполниние  инпутов формы переданными данными по ключу name инпута
   setInputValues(data) {
     this._inputList.forEach((input) => {
      const inputName = input.getAttribute("name");
-     input.value = data[`${inputName}`];
+     input.value = data[inputName];
     });
   }
 // Установка слушателя

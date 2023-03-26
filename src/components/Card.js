@@ -3,6 +3,7 @@ export default class Card {
   constructor(card, templateSelector, handleOpenCardImg) {
     this._name = card.name;
     this._link = card.link;
+    this._alt = card.alt;
     this._templateSelector = templateSelector;
     this._handleOpenCardImg = handleOpenCardImg;
   }
@@ -26,6 +27,7 @@ export default class Card {
 
     this._cardText.textContent = this._name;
     this._cardImage.src = this._link;
+    this._cardText.alt = this._alt;
 
     this._setEventListeners();
 
@@ -45,6 +47,7 @@ export default class Card {
     this._handleOpenCardImg({
       name: this._name,
       link: this._link,
+      alt: this._alt
     });
   }
   // Добавляем Слушатели
