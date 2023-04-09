@@ -9,12 +9,14 @@
 </head>
 
 <body class="page">
-  <header class="header">
+  <header class="header" >
     <img class="header__logo"  src="<%=require('./images/logo.svg')%>" alt="логотип Mesto">
   </header>
   <main>
     <section class="profile">
-      <img class="profile__image"  src="<%=require('./images/Kusto.png')%>" alt="Портрет Жак-Ив Кусто">
+      <button class="profile__button-image" type="button" aria-label="Изменить аватар">
+        <img class="profile__image"  src="<%=require('./images/Kusto.png')%>" alt="Портрет Жак-Ив Кусто">
+      </button>
       <div>
         <div class="profile__content">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -39,7 +41,10 @@
       <img class="element__image">
       <div class="element__caption">
         <h2 class="element__text"></h2>
+        <div class="element__icon-check">
         <button class="element__icon" type="button" aria-label="Установка лайка"></button>
+        <span class="element__icon-quantity">0</span>
+        </div>
       </div>
     </li>
   </template>
@@ -79,6 +84,27 @@
       <button class="popup__close" type="button" aria-label="Закрыть попап"></button>
       <img src="#" alt="#" class="popup__image">
       <h2 class="popup__title popup__title_type_image"></h2>
+    </div>
+  </div>
+  <div class="popup popup_type_avatar">
+    <div class="popup__contener">
+      <button class="popup__close" type="button" aria-label="Закрыть попап"></button>
+      <form class="popup__content" name="popup" method="post" novalidate>
+        <h2 class="popup__title">Обновить аватар</h2>
+        <input type="url" name="link" placeholder="Ссылка на аватар" class="popup__input popup__input_type_about"
+          required id="input-url">
+        <span class="popup__error" id="input-url-error"></span>
+        <button class="popup__save" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
+  <div class="popup popup_type_delete">
+    <div class="popup__contener">
+      <button class="popup__close" type="button" aria-label="Закрыть попап"></button>
+      <div class="popup__content" name="popup">
+        <h2 class="popup__title">Вы уверены?</h2>
+        <button class="popup__save" type="submit">Да</button>
+      </div>
     </div>
   </div>
 </body>
