@@ -4,6 +4,7 @@ export default class PopupWithConfirmation extends Popup {
   constructor(selectorPopup, {handleFormSubmit}) {
     super(selectorPopup);
     this._handleFormSubmit = handleFormSubmit;
+    this._buttonSave = this._popupElement.querySelector(".popup__save");
   }
 // Переопределенный слушатель
   setEventListeners() {

@@ -120,6 +120,7 @@ const popupProfile = new PopupWithForm(
   {
     handleFormSubmit: (data) => {
       popupProfile.expectationText(true, "Сохранение...");
+
       api.setUserInfo(data)
     .then((res) => {
       userInfo.setUserInfo(res)
@@ -217,8 +218,6 @@ const popupDelete = new PopupWithConfirmation(
 
   popupDelete.setEventListeners();
 
-
-
 // Валидация попапов
 const validPopupFormElementProfile = new FormValidator(formValidation, popupFormElementProfile);
 validPopupFormElementProfile.enableValidation();
@@ -228,3 +227,5 @@ validPopupFormElementAddcard.enableValidation();
 
 const validPopupFormElementAvatar = new FormValidator(formValidation, popupFormElementAvatar)
 validPopupFormElementAvatar.enableValidation();
+
+
